@@ -16,6 +16,8 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         setupPageControl()
         createPageViewController()
 
@@ -26,6 +28,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
     private func createPageViewController() {
         let pageController = self.storyboard!.instantiateViewControllerWithIdentifier("PageController") as! UIPageViewController
         pageController.dataSource = self
+        
         
         let firstController = getItemController(0)!
         let startingViewControllers: NSArray = [firstController]
@@ -62,6 +65,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
         if itemIndex < PAGES_AMMOUNT {
             let pageItemController = self.storyboard!.instantiateViewControllerWithIdentifier("ItemController") as! PageItemController
             pageItemController.itemIndex = itemIndex
+            pageItemController.placeName = placeName
             return pageItemController
         }
         
@@ -87,5 +91,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         return 0
     }
+    
+ 
     
 }

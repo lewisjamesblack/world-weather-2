@@ -11,12 +11,24 @@ import UIKit
 class PageItemController: UIViewController {
 
     var itemIndex:Int = 0
+    var placeName:String = ""
+    var location: Place!
     
-    @IBOutlet weak var indexTxt: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        indexTxt.text = "\(itemIndex)"
+        
+        location = Place(name: placeName)
+        location.downloadWeatherDetails(itemIndex, completed: { () -> () in
+            self.updateUI()
+            })
+        }
+    
+    
+    func updateUI() {
     }
+    
+
+    
 
 }
